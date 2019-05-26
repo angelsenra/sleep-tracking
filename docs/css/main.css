@@ -1,0 +1,22 @@
+body {
+  background-color: var(--color4);
+  color: var(--color0);
+  font-family: Arial;
+  font-size: 18px;
+  margin: 0;
+  --color0: #040f0f;
+  --color1: #395756;
+  --color2: #17bebb;
+  --color3: #e4572e;
+  --color4: #fcfffc;
+}
+
+#mdiv {
+  display: block;
+  margin: 2em auto;
+  text-align: center;
+}
+
+.long {
+  height: 100vh;
+}

@@ -1,0 +1,103 @@
+div#menu {
+  background-color: var(--color0);
+  height: 50px;
+  line-height: 50px;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  position: sticky;
+  top: 0;
+  width: 100%;
+}
+
+div#menu > * {
+  color: var(--color4);
+  height: 100%;
+  fill: var(--color4);
+  float: left;
+  padding: 0 1em;
+  text-decoration: none;
+}
+
+div#menu > .mhardhover:hover {
+  background-color: var(--color2);
+  color: var(--color0);
+  fill: var(--color0);
+}
+
+div#menu > .msofthover:hover {
+  color: var(--color2);
+  fill: var(--color2);
+}
+
+#mlogin { float: right !important; }
+
+#mlogin > * { margin: 0 0.25em; }
+
+#mactive { background-color: var(--color3); }
+
+#header {
+  background-color: var(--color1);
+  color: var(--color4);
+  display: block;
+  font-size: 2em;
+  margin: 0 0;
+  padding: 1em 1em;
+}
+
+input[type=password],
+input[type=text] {
+  border: 2px solid var(--color2);
+  color: var(--color2);
+  font-size: 1em;
+}
+
+input[type=submit] {
+  background-color: var(--color4);
+  border-radius: 0;
+  color: var(--color2);
+  font-size: 1em;
+}
+
+/*Links*/
+
+:not(#menu) > a:link { color: var(--color2); }
+
+:not(#menu) > a:visited { color: var(--color3); }
+
+/*Spokes*/
+
+.spokes {
+  display: flex;
+  justify-content: center;
+}
+
+.spokes > .spoke {
+  animation: spokes 3s infinite running;
+  background-color: var(--color3);
+  height: 10em;
+  margin-left: -0.15em;
+  width: 0.15em;
+}
+
+.spokes > .spoke:nth-child(1) {animation-delay: 000ms;}
+.spokes > .spoke:nth-child(2) {animation-delay: 040ms;}
+.spokes > .spoke:nth-child(3) {animation-delay: 080ms;}
+.spokes > .spoke:nth-child(4) {animation-delay: 120ms;}
+.spokes > .spoke:nth-child(5) {animation-delay: 160ms;}
+.spokes > .spoke:nth-child(6) {animation-delay: 200ms;}
+.spokes > .spoke:nth-child(7) {animation-delay: 240ms;}
+.spokes > .spoke:nth-child(8) {animation-delay: 280ms;}
+.spokes > .spoke:nth-child(9) {animation-delay: 320ms;}
+.spokes > .spoke:nth-child(10) {animation-delay: 360ms;}
+
+@keyframes spokes {
+  from {transform: rotateZ(0deg);}
+  to {transform: rotateZ(360deg);}
+}
+
+.inlined {
+  border: 2px dashed var(--color2);
+  display: inline;
+  font-size: 1.5em;
+}

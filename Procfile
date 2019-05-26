@@ -1,0 +1,1 @@
+web: python3 utils/telegram.py & gunicorn main:app

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Tic Tac Toe | Yadkee</title>
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/menu.css">
+  <link rel="icon" href="favicon.ico">
+  <style>
+    .container {
+      display: grid !important;
+      gap: 2% 2%;
+      grid: 32% 32% 32% / 32% 32% 32%;
+      height: 50vh;
+      margin: auto;
+      place-content: stretch stretch;
+      place-items: stretch stretch;
+      width: 50vh;
+    }
+
+    .cell {
+      border: 2px solid red;
+      border-radius: 5px;
+    }
+
+    .cell:hover {
+      background: blue;
+    }
+
+    .cell:nth-child(-n + 3) { grid-row: 1 / 2; }
+    .cell:nth-child(-n + 6):nth-child(n + 4) { grid-row: 2 / 3; }
+    .cell:nth-child(n + 7) { grid-row: 3 / 4; }
+    .cell:nth-child(3n + 1) { grid-column: 1 / 2; }
+    .cell:nth-child(3n + 2) { grid-column: 2 / 3; }
+    .cell:nth-child(3n + 3) { grid-column: 3 / 4; }
+  </style>
+</head>
+
+<body>
+  <a href="https://yadkee.herokuapp.com/" id="header">
+    You are at yadkee.herokuapp.com
+  </a>
+  <div id="menu">
+    <a href="./" class="msofthover">
+      Home
+    </a>
+    <a href="main" class="msofthover">
+      Main
+    </a>
+    <a href="https://yadkee.github.io/heroku-main" class="msofthover">
+      Static
+    </a>
+    <div id="mactive">
+      Games
+    </div>
+    <form action="login" method="post" id="mlogin">
+      <input type="text" name="username">
+      <input type="password" name="password">
+      <input type="submit" value="Login">
+    </form>
+  </div>
+  <div class="container">
+    <div class="cell"> </div>
+    <div class="cell"> </div>
+    <div class="cell"> </div>
+    <div class="cell"> </div>
+    <div class="cell"> </div>
+    <div class="cell"> </div>
+    <div class="cell"> </div>
+    <div class="cell"> </div>
+    <div class="cell"> </div>
+  </div>
+  <script src="js/menu.js"></script>
+  <script src="js/role"></script>
+  <script>
+    const WINNING_ROWS = [
+      [0, 1, 2],
+      [0, 3, 6],
+      [0, 4, 8],
+      [1, 4, 7],
+      [2, 5, 8],
+      [2, 4, 6],
+      [3, 4, 5],
+      [6, 7, 8]
+    ];
+    var turn = "X";
+    var finished = 0;
+
+    function values() {
+      var l = [];
+      for (var i = 0; i < 9; i++) {
+        if (cells[i].innerHTML == "X")
+          l.push(1);
+        else if (cells[i].innerHTML == "O")
+          l.push(-1);
+        else
+          l.push(0);
+      }
+      return l;
+    }
+    function winner(grid) {
+      for (var i = 0; i < 8; i++) {
+        var row = WINNING_ROWS[i];
+        if (grid[row[0]] &&
+          grid[row[0]] == grid[row[1]] &&
+          grid[row[1]] == grid[row[2]])
+          return grid[row[0]];
+      }
+      return 0;
+    }
+    function update() {
+      var grid = values();
+      var w = winner(grid);
+      if (w) {
+        console.log(w + " won!");
+        for (var i = 0; i < 9; i++)
+          cells[i].style = "background: gray;";
+        finished = 1;
+      }
+    }
+
+    var xCells = document.getElementsByClassName("cell");
+    var cells = [];
+    for (var i = 0; i < 9; i++)
+      cells.push(xCells[i]);
+    console.log(cells);
+
+    for (var i = 0; i < 9; i++) {
+      cells[i].onclick = (event) => {
+        if (finished)
+          console.log("The game has ended");
+        else if (event.target.innerHTML == " ") {
+          event.target.innerHTML = turn;
+          turn = (turn == "X" ? "O" : "X");
+          update();
+        }
+        else
+          console.log("This cell is already set");
+      }
+    }
+  </script>
+</body>
+
+</html>

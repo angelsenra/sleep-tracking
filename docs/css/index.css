@@ -1,0 +1,37 @@
+body {
+  background-color: var(--color4);
+  color: var(--color0);
+  font-family: Arial;
+  font-size: 18px;
+  margin: 0;
+  --color0: #040f0f;
+  --color1: #2d3a3a;
+  --color2: #2ba84a;
+  --color3: #248232;
+  --color4: #fcfffc;
+}
+
+#github {
+  padding: 1em 2em;
+  height: 8em;
+}
+
+#glogo {
+  display: block;
+  float: left;
+  width: 8em;
+  fill: var(--color0);
+}
+
+#gstars {
+  border: 2px dashed var(--color2);
+  margin: 0;
+  text-align: center;
+  width: 100%;
+}
+
+#gtext {
+  position: absolute;
+  display: inline;
+  padding: 1em 2em;
+}
